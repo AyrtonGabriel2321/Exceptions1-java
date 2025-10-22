@@ -38,16 +38,14 @@ public class Exceptions {
 				checkOut=sdf.parse(sc.next());
 				
 				
-				Date now = new Date();
-				if(checkIn.before(now) || checkOut.before(now)) {
-					System.out.println("Error in reservation: Reservation dates for update must be future");
-				}
-				else if(!checkOut.after(checkIn)) {
-					System.out.println("Error in reservation :Check-out date must be after check-in date");
-				}
-				else {
 				
-				res.updateDates(checkIn, checkOut);
+				String error = res.updateDates(checkIn, checkOut);
+				if(error !=null) {
+					System.out.println("Error in Reservation: "+error);
+				}
+				
+				
+				else {
 				System.out.println("Reservation: "+res);
 				}
 
